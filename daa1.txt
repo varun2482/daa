@@ -1,20 +1,20 @@
-def fibonacci_iter(n):
+def fib_iter(n):
     a, b, steps = 0, 1, 1
     for _ in range(2, n + 1):
         a, b = b, a + b
         steps += 1
     return (n if n < 2 else b), steps
 
-def fibonacci_recur(n):
+def fib_recur(n):
     if n < 2:
         return n, 1
-    fib1, steps1 = fibonacci_recur(n - 1)
-    fib2, steps2 = fibonacci_recur(n - 2)
+    fib1, steps1 = fib_recur(n - 1)
+    fib2, steps2 = fib_recur(n - 2)
     return fib1 + fib2, steps1 + steps2 + 1
 
 if __name__ == '__main__':
     n = int(input("Enter a non-negative integer: "))
-    iter_result, iter_steps = fibonacci_iter(n)
-    recur_result, recur_steps = fibonacci_recur(n)
+    iter_result, iter_steps = fib_iter(n)
+    recur_result, recur_steps = fib_recur(n)
     print(f"Iterative: {iter_result}, Steps: {iter_steps}")
     print(f"Recursive: {recur_result}, Steps: {recur_steps}")
